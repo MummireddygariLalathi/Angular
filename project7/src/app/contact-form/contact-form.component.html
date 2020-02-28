@@ -1,0 +1,51 @@
+<section class="container p-5">
+    <h3> {{isNew?"Add":"Edit"}} Contact</h3>
+    <form class="form" #f="ngForm">
+        <div>
+            <label>ContactId</label>
+            <input type="number" name="cid" [(ngModel)]="contact.contactID" class="form-control"
+            [readonly]="!isNew" required="required" min="100" #cid="ngModel"/>
+            <ol *ngIf ="(cid.touched || cid.dirty) && cid.invalid">
+                <li *ngIf="cid.errors.required">Can not be left blank</li>
+                <li *ngIf="cid.errors.min">Can not be less than 100</li>
+            </ol>
+        </div>
+        <div>
+            <label>First Name</label>
+            <input type="text" name="fnm" [(ngModel)]="contact.firstName" class="form-control" required #fnm="ngModel" minlength="5"/>
+            <ol *ngIf="(fnm.touched || fnm.dirty) && fnm.invalid">
+                <li *ngIf="fnm.errors.required">Can not be left blank</li>
+            <li *ngIf="fnm.errors.minlength">Can not be less than 5 chars</li>
+
+            </ol>
+        </div>
+        <div>
+        <label> Last Name</label>
+        <input type="text" name="lnm" [(ngModel)]="contact.lastname" class="form-control">
+        </div>
+        <div>
+        <label> Mobile Number</label>
+        <input type="number" name="mn" [(ngModel)]="contact.mobileNumber" class="form-control">
+
+       </div>
+       <div>
+       <label>Email</label>
+       <input type="email" name="em" [(ngModel)]="contact.emailId" class="form-control">
+       </div>
+       <div>
+           <label>Alternate Mobile Number</label>
+           <input type="number"name="amn" [(ngModel)]="contact.alternateMobileNumber" class="form-control">
+       </div>
+       <div>
+           <label>DOB</label>
+           <input type="date"name="dob" [(ngModel)]="dobStr" (change)="dobUpdate()" class="form-control">
+       </div>
+       <div>
+           <label>Organization</label>
+           <input type="text" name="org" [(ngModel)]="contact.organization" class="form-control">
+       </div>
+       <div class="text-right">
+       <button type="button" name="btnSave" class="btn btn-primary" [disabled]="f.invalid" (click)="save()">ADD</button>
+       </div>
+    </form>
+</section>

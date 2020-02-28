@@ -1,0 +1,11 @@
+section{
+    background-color: darkgoldenrod;
+    padding:15px;
+}
+section div:first-child{
+    border-bottom: 1px dashed black;
+    margin-bottom: 5px;
+}
+section div:left-child{
+    font-weight:bolder;
+}
